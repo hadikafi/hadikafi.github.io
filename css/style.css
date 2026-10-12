@@ -624,61 +624,6 @@ img {
 }
 
 /* ==========================================================================
-   METRICS RIBBON
-   ========================================================================== */
-.metrics-section {
-  padding-block: 0 40px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding: 22px 24px;
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--card-shadow);
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.metric-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-
-.metric-item:not(:last-child) {
-  border-right: 1px solid var(--line);
-  padding-right: 16px;
-}
-
-.metric-val {
-  font-family: var(--font-mono);
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--ink) 30%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-
-.metric-label {
-  font-size: 11.5px;
-  font-weight: 500;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.35;
-}
-
-/* ==========================================================================
    SECTION COMMON STYLES
    ========================================================================== */
 .section {
@@ -1124,13 +1069,6 @@ img {
   background: var(--surface-hover);
 }
 
-.skill-pill.highlight {
-  border-color: var(--badge-border);
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  font-weight: 600;
-}
-
 /* ==========================================================================
    EDUCATION & LANGUAGES SECTION
    ========================================================================== */
@@ -1256,41 +1194,51 @@ img {
   flex-shrink: 0;
 }
 
+
 /* ==========================================================================
-   CONTACT SECTION & FOOTER
+   CONTACT SECTION & FOOTER (MINIMAL)
    ========================================================================== */
-.contact-cards {
+.contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-bottom: 36px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+  max-width: 100%;
+}
+
+.contact-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   max-width: 100%;
 }
 
 .contact-card {
-  padding: 22px;
-  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--card-shadow);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
   transition: all var(--transition-fast);
   max-width: 100%;
   box-sizing: border-box;
 }
 
 .contact-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
 }
 
 .contact-card-icon {
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-md);
-  background: var(--badge-bg);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
   color: var(--accent);
   display: grid;
   place-items: center;
@@ -1298,13 +1246,21 @@ img {
 }
 
 .contact-card-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: currentColor;
 }
 
+.contact-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .contact-card-title {
-  font-size: 12px;
+  font-size: 11px;
   font-family: var(--font-mono);
   color: var(--muted);
   text-transform: uppercase;
@@ -1312,11 +1268,12 @@ img {
 }
 
 .contact-card-val {
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--ink);
-  word-break: break-all;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .site-footer {
@@ -1442,21 +1399,11 @@ img {
   }
 
   /* Compact or hide badge under tablet avatar */
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    padding: 20px;
-  }
+  
 
-  .metric-item:nth-child(2) {
-    border-right: none;
-  }
+  
 
-  .metric-item:nth-child(1),
-  .metric-item:nth-child(2) {
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 14px;
-  }
+  
 
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1472,9 +1419,7 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .contact-cards {
-    grid-template-columns: 1fr;
-  }
+  .contact-grid { grid-template-columns: 1fr; }
 
   .cv-box {
     flex-direction: column;
@@ -1593,19 +1538,11 @@ img {
     width: 100%;
   }
 
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 16px 14px;
-  }
+  
 
-  .metric-val {
-    font-size: 24px;
-  }
+  
 
-  .metric-label {
-    font-size: 11px;
-  }
+  
 
   .section {
     padding-block: 44px;
@@ -1753,24 +1690,13 @@ img {
     min-height: 42px;
   }
 
-  .metrics-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 14px 10px;
-  }
+  
 
-  .metric-item:nth-child(odd) {
-    border-right: 1px solid var(--line) !important;
-    padding-right: 8px;
-  }
+  
 
-  .metric-val {
-    font-size: 20px;
-  }
+  
 
-  .metric-label {
-    font-size: 10px;
-  }
+  
 
   .toast-notice {
     left: 14px;
