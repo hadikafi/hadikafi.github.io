@@ -55,26 +55,37 @@
      MOBILE NAVIGATION
      ========================================================================== */
   if (menuToggle && nav) {
-    menuToggle.addEventListener('click', () => {
+    function closeNav() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
+    }
+
+    function toggleNav() {
       const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
       menuToggle.setAttribute('aria-expanded', String(!isOpen));
       nav.classList.toggle('is-open', !isOpen);
-      document.body.style.overflow = !isOpen ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleNav();
     });
 
     nav.addEventListener('click', (e) => {
       if (e.target.closest('a')) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-        document.body.style.overflow = '';
+        closeNav();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('is-open') && !nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeNav();
       }
     });
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-        document.body.style.overflow = '';
+        closeNav();
         menuToggle.focus();
       }
     });
